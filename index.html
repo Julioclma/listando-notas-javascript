@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    table {
+        width: 100%;
+
+    }
+
+    th,
+    td {
+        border: solid 1px;
+    }
+</style>
+
+<body>
+    <table class="">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Nota 1</th>
+                <th>Nota 2</th>
+                <th>Nota 3</th>
+                <th>Nota 4</th>
+                <th>Média</th>
+            </tr>
+        </thead>
+        <tbody id="data">
+
+
+        </tbody>
+
+    </table>
+
+
+</body>
+
+</html>
+
+<script>
+    const alunos = [{
+            nome: "Daniel",
+            notas: [10, 3, 7.5, 3]
+        },
+        {
+            nome: "Maria",
+            notas: [10, 9, 3, 9.5]
+        },
+        {
+            nome: "João",
+            notas: [10, 4.5, 1, 3.5]
+        },
+        {
+            nome: "Joana",
+            notas: [1, 3, 9, 1.5]
+        },
+        {
+            nome: "José",
+            notas: [10, 4.5, 7, 3]
+        },
+        {
+            nome: "Arnaldo",
+            notas: [10, 4.5, 7, 3]
+        },
+        {
+            nome: "Lucas",
+            notas: [4.5, 9, 8, 3]
+        },
+        {
+            nome: "Luana",
+            notas: [3, 7, 9, 3]
+        },
+        {
+            nome: "Beatriz",
+            notas: [10, 4, 7, 9]
+        },
+        {
+            nome: "Sergio",
+            notas: [4.5, 9.5, 10, 2]
+        }
+    ];
+
+
+
+    // let content = '';
+    // for (const key in alunos) {
+    //     let aluno = alunos[key];
+    //     content += '<tr>';
+    //     for (const key in aluno) {
+    //         let media = 0;
+    //         if (!Array.isArray(aluno[key])) {
+    //             content += `<td>${aluno[key]}</td>`;
+    //         } else {
+    //             const notas = aluno[key];
+    //             for (const nota in notas) {
+    //                 content += `<td>${notas[nota]}</td>`;
+    //                 media += notas[nota];
+    //             }
+
+    //             content += `<td>${media/notas.length}</td>`;
+    //         }
+    //     }
+    //     content += '</tr>'
+    // }
+
+    const body = document.getElementById("data");
+
+
+
+    function media(notas) {
+        total = notas.length;
+        valorTotal = 0;
+        notas.forEach(nota => {
+            valorTotal += nota;
+        });
+
+        return valorTotal / total;
+
+    }
+
+
+    alunos.forEach(aluno => {
+        aluno.media = media(aluno.notas);
+    });
+
+    const html = alunos.map(aluno => `
+    <tr>
+        <td>${aluno.nome}</td>
+        ${aluno.notas.map(nota => `<td>${nota}</td>`).join("")}
+        <td>${aluno.media}</td>
+    </tr>
+        `).join("");
+
+    body.innerHTML = html;
+</script>
