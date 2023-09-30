@@ -16,6 +16,19 @@
     td {
         border: solid 1px;
     }
+
+    .reproved,
+    .aproved {
+        color: white;
+    }
+
+    .reproved {
+        background-color: red;
+    }
+
+    .aproved {
+        background-color: green;
+    }
 </style>
 
 <body>
@@ -105,9 +118,9 @@
     <tr>
         <td>${aluno.nome}</td>
         ${aluno.notas.map(nota => `<td>${nota}</td>`).join("")}
-        <td>${aluno.media}</td>
+        <td class="${aluno.media < 6 ? 'reproved' : 'aproved' }">${aluno.media}</td>
     </tr>
         `).join("");
 
-        document.getElementById("data").innerHTML = html;
+    document.getElementById("data").innerHTML = html;
 </script>
