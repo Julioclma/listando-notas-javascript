@@ -86,32 +86,6 @@
     ];
 
 
-
-    // let content = '';
-    // for (const key in alunos) {
-    //     let aluno = alunos[key];
-    //     content += '<tr>';
-    //     for (const key in aluno) {
-    //         let media = 0;
-    //         if (!Array.isArray(aluno[key])) {
-    //             content += `<td>${aluno[key]}</td>`;
-    //         } else {
-    //             const notas = aluno[key];
-    //             for (const nota in notas) {
-    //                 content += `<td>${notas[nota]}</td>`;
-    //                 media += notas[nota];
-    //             }
-
-    //             content += `<td>${media/notas.length}</td>`;
-    //         }
-    //     }
-    //     content += '</tr>'
-    // }
-
-    const body = document.getElementById("data");
-
-
-
     function media(notas) {
         total = notas.length;
         valorTotal = 0;
@@ -120,7 +94,6 @@
         });
 
         return valorTotal / total;
-
     }
 
 
@@ -136,5 +109,5 @@
     </tr>
         `).join("");
 
-    body.innerHTML = html;
+        document.getElementById("data").innerHTML = html;
 </script>
